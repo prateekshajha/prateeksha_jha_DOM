@@ -27,3 +27,12 @@ console.log(add_item)
 add_item.style.color="green";
 add_item.style.fontWeight = 700;
 
+var list_items=document.getElementsByClassName("list-group-item");
+
+console.log(list_items);
+
+list_items[2].style.backgroundColor="yellow";
+
+for(let i=0;i<list_items.length;i++){
+    list_items[i].style.fontWeight="bold";
+}
