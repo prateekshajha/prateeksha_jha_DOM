@@ -36,3 +36,8 @@ list_items[2].style.backgroundColor="yellow";
 for(let i=0;i<list_items.length;i++){
     list_items[i].style.fontWeight="bold";
 }
+
+var list2=document.getElementsByTagName("li")
+for(let i=0;i<list2.length;i++){
+    list2[i].style.color="red";
+}
