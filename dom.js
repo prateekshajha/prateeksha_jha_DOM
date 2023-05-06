@@ -1,38 +1,49 @@
-// var itemList = document.querySelector("#items");
-// console.log(itemList.parentNode);
-// itemList.parentNode.style.backgroundColor="#f4f4f4";
-// console.log(itemList.parentNode.parentNode);
-// console.log(itemList.children);
-// itemList.children[1].style.backgroundColor="yellow";
-// console.log(itemList.firstElementChild);
-// console.log(itemList.lastElementChild);
-// console.log(itemList.nextElementSibling);
-// console.log(itemList.previousElementSibling);
-// itemList.previousElementSibling.style.backgroundColor="green";
+var form = document.querySelector('#addForm');
+var ul =document.querySelector('#items');
 
-// var newDiv= document.createElement('div');
-// newDiv.className="hello";
-// newDiv.id="hello1";
-// newDiv.setAttribute('title','Hello Div');
+console.log(form);
+console.log(ul);
 
-// var newDivText=document.createTextNode("hello world");
-// newDiv.appendChild(newDivText);
+form.addEventListener('submit',addItem);  
 
-// console.log(newDiv)
+function addItem(e){
+    e.preventDefault()
+    var newItem=document.getElementById('item').value;
 
-var container = document.querySelector('header container');
-var h1 = document.querySelector('header h1');
+    var li = document.createElement('li');
 
-console.log(container)
-console.log(h1)
-// container.insertBefore(newDiv,h1);
+    li.className='list-group-item';
 
-// var newLI=document.createElement('div')
-// newLI.appendChild(document.createTextNode("helloWorld"));
+    li.appendChild(document.createTextNode(newItem));
 
-// var ul=document.querySelector('ul')
-// var listitems=document.querySelector('#items')
-// var firstitem=listitems.firstElementChild
-// console.log(ul)
-// console.log(newLI)
-// ul.insertBefore(newLI,firstitem)
+    ul.appendChild(li);
+
+    var deleteBtn=document.createElement('button');
+
+    deleteBtn.className='btn btn-danger btn-sm float-right delete';
+
+    deleteBtn.appendChild(document.createTextNode('X'))
+
+    li.appendChild(deleteBtn);
+
+    ul.appendChild(li);
+}
+
+var li= document.getElementsByClassName('btn-sm float-right')
+var editBtn=document.createElement('button');
+editBtn.classname='btn btn-sm float-right';
+editBtn.appendChild(document.createTextNode('Edit'));
+
+for(let i=0;i<li.length;i++){
+    li[i].appendChild(editBtn);
+}
+li.appendChild(editBtn);
+function removeItem(e){
+    if(e.target.classList.contains('delete')){
+        if(confirm('Are you sure ?')){
+            var li= e.target.parentElement;
+            DataTransferItemList.removeChild(li);
+        }
+    }
+        
+}
